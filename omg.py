@@ -92,7 +92,7 @@ def save_resellers():
 def generate_key(duration):
     characters = string.ascii_letters + string.digits
     random_part = ''.join(random.choice(characters) for _ in range(10)).upper()
-    return f"NINJA-{duration.upper()}-{random_part}"
+    return f"Sikandar-{duration.upper()}-{random_part}"
 
 def add_time_to_current_date(hours=0):
     return (datetime.datetime.now() + datetime.timedelta(hours=hours)).strftime('%Y-%m-%d %H:%M:%S')
@@ -178,7 +178,7 @@ def start_command(message):
     else:
         markup.add(attack_button, myinfo_button, redeem_button)
         
-    bot.reply_to(message, "𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 NINJA 𝗯𝗼𝘁!", reply_markup=markup)
+    bot.reply_to(message, "𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 Sikandar 𝗯𝗼𝘁!", reply_markup=markup)
     
 @bot.message_handler(func=lambda message: message.text == "⚙️ Settings")
 def settings_command(message):
