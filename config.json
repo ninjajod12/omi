@@ -1,5 +1,5 @@
 {
-    "initial_parameters": 2,
+    "initial_parameters": 3,
     "initial_threads": "1000",
     "initial_packets": "300",
     "initial_binary": "ii2",
