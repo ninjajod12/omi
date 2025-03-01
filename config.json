@@ -2,7 +2,7 @@
     "initial_parameters": 3,
     "initial_threads": "1000",
     "initial_packets": "300",
-    "initial_binary": "ii2",
+    "initial_binary": "IZUNA",
     "max_attack_time": 240,
     "attack_cooldown": 300
 }
