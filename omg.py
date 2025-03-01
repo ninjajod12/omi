@@ -36,27 +36,27 @@ LOCAL_TIMEZONE = pytz.timezone("Asia/Kolkata")
 PROTECTED_FILES = ["IZUNA.py", "IZUNA"]
 BLOCKED_COMMANDS = ['nano', 'vim', 'shutdown', 'reboot', 'rm', 'mv', 'dd']
 
-USER_NAME = os.getlogin()
-HOST_NAME = socket.gethostname()
+#USER_NAME = os.getlogin()
+#HOST_NAME = socket.gethostname()
 
 current_directory = os.path.expanduser("~")
 
-def get_user_and_host():
-    try:
-        user = os.getlogin()
-        host = socket.gethostname()
-
-        if 'CODESPACE_NAME' in os.environ:
-            user = os.environ['CODESPACE_NAME']
-            host = 'github.codespaces'
-
-        if platform.system() == 'Linux' and 'CLOUD_PLATFORM' in os.environ:
-            user = os.environ.get('USER', 'clouduser')
-            host = os.environ.get('CLOUD_HOSTNAME', socket.gethostname())
-
-        return user, host
-    except Exception as e:
-        return 'user', 'hostname'
+#def get_user_and_host():
+#    try:
+#        user = os.getlogin()
+#        host = socket.gethostname()
+#
+#        if 'CODESPACE_NAME' in os.environ:
+#            user = os.environ['CODESPACE_NAME']
+#            host = 'github.codespaces'
+#
+#        if platform.system() == 'Linux' and 'CLOUD_PLATFORM' in os.environ:
+#            user = os.environ.get('USER', 'clouduser')
+#            host = os.environ.get('CLOUD_HOSTNAME', socket.gethostname())
+#
+#        return user, host
+#    except Exception as e:
+#        return 'user', 'hostname'
 
 async def execute_terminal(update: Update, context: CallbackContext):
     global current_directory
