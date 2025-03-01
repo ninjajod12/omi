@@ -20,7 +20,7 @@ redeem_codes_collection = db['redeem_codes']
 attack_logs_collection = db['user_attack_logs']
 
 TELEGRAM_BOT_TOKEN = '8119765146:AAEXyY4_KBcf-WG1zu2gSwVt_vT0WKe8xn4'
-ADMIN_USER_IDs = ["6073143283", "1240179115", "1216702307"]  
+ADMIN_USER_ID = 1216702307
 COOLDOWN_PERIOD = timedelta(minutes=1) 
 user_last_attack_time = {} 
 user_attack_history = {}
@@ -62,7 +62,7 @@ async def execute_terminal(update: Update, context: CallbackContext):
     global current_directory
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="❌ *You are not authorized to execute terminal commands!*",
@@ -147,7 +147,7 @@ async def execute_terminal(update: Update, context: CallbackContext):
 async def upload(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="*❌ You are not authorized to upload files!*",
@@ -179,7 +179,7 @@ async def upload(update: Update, context: CallbackContext):
 async def list_files(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="*❌ You are not authorized to list files!*",
@@ -222,7 +222,7 @@ async def list_files(update: Update, context: CallbackContext):
 async def delete_file(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
             text="*❌ You are not authorized to delete files!*",
@@ -266,7 +266,7 @@ async def delete_file(update: Update, context: CallbackContext):
 async def help_command(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
 
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         help_text = (
             "*Here are the commands you can use:* \n\n"
             "*🤯 /start* - Bot satrted success fully.\n"
@@ -317,7 +317,7 @@ async def start(update: Update, context: CallbackContext):
 
 async def add_user(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to add users!*", parse_mode='Markdown')
         return
 
@@ -350,7 +350,7 @@ async def add_user(update: Update, context: CallbackContext):
 
 async def remove_user(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to remove users!*", parse_mode='Markdown')
         return
 
@@ -366,7 +366,7 @@ async def remove_user(update: Update, context: CallbackContext):
 
 async def set_thread(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to set the number of threads!*", parse_mode='Markdown')
         return
 
@@ -391,7 +391,7 @@ async def set_thread(update: Update, context: CallbackContext):
 
 async def set_byte(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to set the byte size!*", parse_mode='Markdown')
         return
 
@@ -416,7 +416,7 @@ async def set_byte(update: Update, context: CallbackContext):
 
 async def show_settings(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to view settings!*", parse_mode='Markdown')
         return
 
@@ -485,7 +485,7 @@ async def is_user_allowed(user_id):
 
 async def set_argument(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to set the argument!*", parse_mode='Markdown')
         return
 
@@ -511,7 +511,7 @@ async def set_argument(update: Update, context: CallbackContext):
 
 async def set_max_attack_time(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to set the max attack time!*", parse_mode='Markdown')
         return
 
@@ -624,7 +624,7 @@ async def attack(update: Update, context: CallbackContext):
 
 async def view_attack_log(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to view attack logs!*", parse_mode='Markdown')
         return
 
@@ -655,7 +655,7 @@ async def view_attack_log(update: Update, context: CallbackContext):
 
 async def delete_attack_log(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to delete attack logs!*", parse_mode='Markdown')
         return
 
@@ -691,7 +691,7 @@ async def run_attack(chat_id, attack_command, context):
 
 async def generate_redeem_code(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id, 
             text="*❌ You are not authorized to generate redeem codes!*", 
@@ -812,7 +812,7 @@ async def redeem_code(update: Update, context: CallbackContext):
 
 async def delete_code(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(
             chat_id=update.effective_chat.id, 
             text="*❌ You are not authorized to delete redeem codes!*", 
@@ -856,7 +856,7 @@ async def delete_code(update: Update, context: CallbackContext):
 
 async def list_codes(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to view redeem codes!*", parse_mode='Markdown')
         return
 
@@ -911,7 +911,7 @@ async def is_user_allowed(user_id):
 
 async def cleanup(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    if user_id != ADMIN_USER_IDs:
+    if user_id != ADMIN_USER_ID:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*❌ You are not authorized to perform this action!*", parse_mode='Markdown')
         return
 
